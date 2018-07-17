@@ -15,9 +15,9 @@ const botStats = {
 	
 	client.on('guildCreate', guild => {
 		
-	client.channels.get(botStats.totalGuildsID).setName('TotalGuilds : ${client.guilds.size}');
-	client.channels.get(botStats.totalUsersID).setName('TotalUsers : ${client.guilds.reduce((a, g) => a + g.memberCount, 0)}');
-	client.channels.get(botStats.totalChannelsID).setName('TotalChannels : ${client.channels.size}');
+	client.channels.get(botStats.totalGuildsID).setName('Total Guilds : ${client.guilds.size}');
+	client.channels.get(botStats.totalUsersID).setName('Total Users : ${client.guilds.reduce((a, g) => a + g.memberCount, 0)}');
+	client.channels.get(botStats.totalChannelsID).setName('Total Channels : ${client.channels.size}');
 		
 		
 		
@@ -27,9 +27,9 @@ const botStats = {
 	client.on('guildDelete', guild => {
 	
 	
-	client.channels.get(botStats.totalGuildsID).setName('TotalGuilds : ${client.guilds.size}');
-	client.channels.get(botStats.totalUsersID).setName('TotalUsers : ${client.guilds.reduce((a, g) => a + g.memberCount, 0)}');
-	client.channels.get(botStats.totalChannelsID).setName('TotalChannels : ${client.channels.size}');
+	client.channels.get(botStats.totalGuildsID).setName('Total Guilds : ${client.guilds.size}');
+	client.channels.get(botStats.totalUsersID).setName('Total Users : ${client.guilds.reduce((a, g) => a + g.memberCount, 0)}');
+	client.channels.get(botStats.totalChannelsID).setName('Total Channels : ${client.channels.size}');
 		
 			
 		
