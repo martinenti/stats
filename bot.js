@@ -8,7 +8,7 @@ console.log("Welcome Again !");
 const botStats = {
 	totalGuildsID: '468779433692758016',
 	totalUsersID: '468779034302480384',
-	totalChannelsID: '468779680632274963',
+	totalChannelsID: '468779680632274963'
 	
 	
 }
