@@ -1,3 +1,10 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+console.log("Welcome Again !");
+ 
+
+
 const botStats = {
 	totalGuildsID: '468779433692758016',
 	totalUsersID: '468779034302480384',
