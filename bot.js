@@ -5,40 +5,56 @@ console.log("Welcome Again !");
  
 
 
-const botStats = {
-	totalGuildsID: '468779433692758016',
-	totalUsersID: '468779034302480384',
-	totalChannelsID: '468779680632274963'
-	
-	
-}
-	
-	client.on('guildCreate', guild => {
-		
-	client.channels.get(botStats.totalGuildsID).setName('Total Guilds : ${client.guilds.size}');
-	client.channels.get(botStats.totalUsersID).setName('Total Users : ${client.guilds.reduce((a, g) => a + g.memberCount, 0)}');
-	client.channels.get(botStats.totalChannelsID).setName('Total Channels : ${client.channels.size}');
-		
-		
-		
+const serverStats = {
+        guildID: '468461294262157342',
+	totalUsersID:'469073030858014731',
+	memberCountID:'469072607610929162',
+	botCountID:'469073139578437632'
+};
+
+
+client.on('guildMemberAdd', member => {
+
+if (member.guild.id !== serverStats.guildID) return;
+client.channels.get(serverStats.totalUsersID).setName('Total Users : ${member.guild.memberCount}');
+client.channels.get(serverStats.memberCountID).setName('Member Count : ${member.guild.members.filter(m => !m.user.bot).size}');	
+client.channels.get(serverStats.botCountID).setName('Bot Count : ${member.guild.members.filter(m => m.user.bot).size}');
+
 });
-		
-		
-	client.on('guildDelete', guild => {
+
+
+
+
+client.on('guildMemberRemove', member => {
+if (member.guild.id !== serverStats.guildID) return;
 	
-	
-	client.channels.get(botStats.totalGuildsID).setName('Total Guilds : ${client.guilds.size}');
-	client.channels.get(botStats.totalUsersID).setName('Total Users : ${client.guilds.reduce((a, g) => a + g.memberCount, 0)}');
-	client.channels.get(botStats.totalChannelsID).setName('Total Channels : ${client.channels.size}');
-		
-			
-		
-	
-	
-	
-	
-	
-	});
+client.channels.get(serverStats.totalUsersID).setName('Total Users : ${member.guild.memberCount}');
+client.channels.get(serverStats.memberCountID).setName('Member Count : ${member.guild.members.filter(m => !m.user.bot).size}');	
+client.channels.get(serverStats.botCountID).setName('Bot Count : ${member.guild.members.filter(m => m.user.bot).size}');
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 client.login(process.env.BOT_TOKEN);
