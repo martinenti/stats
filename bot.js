@@ -1,41 +1,51 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+ const prefix = "+";
+client.on('ready', () => {
+    console.log('I am ready!');
+});
 
-console.log("Welcome Again !");
- 
+client.on('message', message => {
+    if (message.content === 'zg') {
+        message.reply('pong');
+      }
+});
 
 
-const serverStats = {
-        guildID: '468461294262157342',
-	totalUsersID:'469073030858014731',
-	memberCountID:'469072607610929162',
-	botCountID:'469073139578437632'
-};
+
+//first we need to create an object
+const serverStats = { 
+    guildID: '257148202707451904',
+    totalUsersIS: '468779034302480384',
+    memberCountID: '468779433692758016',
+    botCountID: '468779680632274963',    
+}; //this is thefirst
+
+
 
 
 client.on('guildMemberAdd', member => {
+    if (member.guild.id !== serverStats.guildID) return;
+    client.channels.get(serverStats.totalUsersID).setName(`Total Users : ${member.guild.memberCount}`);
+    client.channels.get(serverStats.memberCountID).setName(`Member Count : ${member.guild.members.filter(m => !m.bot).size}`);  
+    client.channels.get(serverStats.botCountID).setName(`Bot Count : ${member.guild.members.filter(m => m.bot).size}`); 
+    
+    
+});
 
-if (member.guild.id !== serverStats.guildID) return;
-client.channels.get(serverStats.totalUsersID).setName('Total Users : ${member.guild.memberCount}');
-client.channels.get(serverStats.memberCountID).setName('Member Count : ${member.guild.members.filter(m => !m.user.bot).size}');	
-client.channels.get(serverStats.botCountID).setName('Bot Count : ${member.guild.members.filter(m => m.user.bot).size}');
 
+client.on('guildMemberRemove', member => 
+    if (member.guild.id !== serverStats.guildID) return;
+    client.channels.get(serverStats.totalUsersID).setName(`Total Users : ${member.guild.memberCount}`);
+    client.channels.get(serverStats.memberCountID).setName(`Member Count : ${member.guild.members.filter(m => !m.bot).size}`);  
+    client.channels.get(serverStats.botCountID).setName(`Bot Count : ${member.guild.members.filter(m => m.bot).size}`); 
+          
+          
 });
 
 
 
 
-client.on('guildMemberRemove', member => {
-if (member.guild.id !== serverStats.guildID) return;
-	
-client.channels.get(serverStats.totalUsersID).setName('Total Users : ${member.guild.memberCount}');
-client.channels.get(serverStats.memberCountID).setName('Member Count : ${member.guild.members.filter(m => !m.user.bot).size}');	
-client.channels.get(serverStats.botCountID).setName('Bot Count : ${member.guild.members.filter(m => m.user.bot).size}');
-
-
-
-
-});
 
 
 
@@ -46,15 +56,4 @@ client.channels.get(serverStats.botCountID).setName('Bot Count : ${member.guild.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);  //اياكككك تلعب هنا لا تحط توكنك هنا 
