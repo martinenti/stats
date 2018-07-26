@@ -15,7 +15,7 @@ client.on('message', message => {
 
 //first we need to create an object
 const serverStats = { 
-    guildID: '257148202707451904',
+    guildID: '468778849480474639',
     totalUsersIS: '468779034302480384',
     memberCountID: '468779433692758016',
     botCountID: '468779680632274963',    
